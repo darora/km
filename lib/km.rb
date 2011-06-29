@@ -106,6 +106,8 @@ class KM
         log_error(e)
       end
     end
+    
+    handle_asynchronously :send_logged_queries
 
     def log_dir
       @log_dir
@@ -197,6 +199,7 @@ class KM
       query = '/' + type + '?' + query_arr.join('&')
       if @use_cron
         log_query(query)
+        send_logged_queries
       else
         begin
           send_query(query)
