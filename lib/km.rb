@@ -211,10 +211,10 @@ class KM
     end
 
     def send_query(line)
-      if @env != 'production'
-        log_sent(line)
-        return
-      end
+      # if @env != 'production'
+      #   log_sent(line)
+      #   return
+      # end
       begin
         host,port = @host.split(':')
         res = Net::HTTP.start(host, port) do |http|
